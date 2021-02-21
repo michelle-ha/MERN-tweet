@@ -17,7 +17,7 @@ module.exports = function validateRegisterInput(data) {
         errors.handle = "Handle field is required"
     }
 
-    if(!Validator.isEmpty(data.email)) {
+    if(Validator.isEmpty(data.email)) {
         errors.email = "Email field is required"
     }
 
