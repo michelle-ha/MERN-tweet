@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router() //gets a router object from router
 const User = require("../../models/User") //import user model
 const bcrypt = require("bcryptjs")
+const keys = require('../../config/keys')
+const jwt = require('jsonwebtoken')
 
 router.get("/test", (req, res) => {
     res.json({msg: "This is the user route"})
@@ -49,7 +51,23 @@ router.post('/login', (req, res) => {
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch) {
-                        res.json({msg: "Success"})
+                        // res.json({msg: "Success"})
+                        const payload = {
+                            id: user.id,
+                            handle: user.handle,
+                            email: user.email
+                        }
+                        jwt.sign(
+                            payload,
+                            keys.secretOrKey,
+                            {expiresIn: 3600},
+                            (err, token) => {
+                                res.json({
+                                    success: true,
+                                    token: "Bearer" + token
+                                })
+                            }
+                        )
                     } else {
                         return res.status(400).json({password: "Incorrect password"})
                     }
