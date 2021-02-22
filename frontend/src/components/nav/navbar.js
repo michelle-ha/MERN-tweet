@@ -8,21 +8,13 @@ class NavBar extends React.Component {
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> eb681c57e46ddaebf195b9577c740c61c90230f7
   logoutUser(e) {
       e.preventDefault();
       this.props.logout();
   }
-<<<<<<< HEAD
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-=======
-  getLinks() { //  // Selectively render links dependent on whether the user is logged in
->>>>>>> eb681c57e46ddaebf195b9577c740c61c90230f7
       if (this.props.loggedIn) {
         return (
             <div>
@@ -41,10 +33,6 @@ class NavBar extends React.Component {
         );
       }
   }
-<<<<<<< HEAD
-
-=======
->>>>>>> eb681c57e46ddaebf195b9577c740c61c90230f7
   render() {
       return (
         <div>
@@ -54,8 +42,4 @@ class NavBar extends React.Component {
       );
   }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> eb681c57e46ddaebf195b9577c740c61c90230f7
 export default NavBar;
